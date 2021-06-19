@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <!-- Apply the code generator -->
+    <ItemGroup>
+        <ProjectReference 
+            Include="..\Generator\Generator.csproj" 
+            ReferenceOutputAssembly="false"
+            OutputItemType="Analyzer" />
+    </ItemGroup>
+    
+    <!-- Enabled to be able to see the generated files in a local `Generated` folder -->
+    <PropertyGroup>
+        <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+        <CompilerGeneratedFilesOutputPath>Generated</CompilerGeneratedFilesOutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!-- Does not compile the generated files -->
+        <Compile Remove="$(CompilerGeneratedFilesOutputPath)/*/**/*.cs" />
+    </ItemGroup>
+
+</Project>
